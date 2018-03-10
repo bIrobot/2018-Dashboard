@@ -29,11 +29,11 @@ button, input[type="text"], input[type="number"], .select-container, select {
     padding: 0;
     display: inline-block;
 }
-select {
+select { /* Autonomous mode selector dropdown*/
     border: none;
-    background: none;
+    background: #333;
     color: white;
-    height: 25px;
+    height: 30px;
 }
 input[type="text"], input[type="number"] {
     cursor: text;
@@ -76,7 +76,9 @@ header {
     overflow: hidden;
     background-color: #333;
     /* You'll need to mess with this a bit to get your camera to work. Replace the url with a live-updating image feed from your camera. Using other camera streaming systems will require some tweaking. */
-    /*background-image: url('LINK TO CAMERA SOURCE HERE');*/
+    background-image: url(http://10.60.98.2:1181/?action=stream);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 article {
     top: 0;
