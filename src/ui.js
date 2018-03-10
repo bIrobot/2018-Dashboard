@@ -18,7 +18,10 @@ let ui = {
         readout: document.getElementById('example-readout').firstChild
     },
     autoSelect: document.getElementById('auto-select'),
-    armPosition: document.getElementById('arm-position')
+    armPosition: document.getElementById('arm-position'),
+    robotCurrent: document.getElementById('robot-current'),
+    robotEnergy: document.getElementById('robot-energy'),
+    robotPower: document.getElementById('robot-power')
 };
 
 // Key Listeners
@@ -83,6 +86,18 @@ NetworkTables.addKeyListener('/SmartDashboard/Auto List', (key, value) => {
 // Load list of prewritten autonomous modes
 NetworkTables.addKeyListener('/SmartDashboard/Autonomous Mode/selected', (key, value) => {
     ui.autoSelect.value = value;
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/robot/totalCurrent', (key, value) => {
+    ui.robotCurrent.textContent = 'Current: ' + value + 'A';
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/robot/totalEnergy', (key, value) => {
+    ui.robotEnergy.textContent = 'Energy: ' + value + 'J';
+});
+
+NetworkTables.addKeyListener('/SmartDashboard/robot/totalPower', (key, value) => {
+    ui.robotPower.textContent = 'Power: ' + value + 'W';
 });
 
 // The rest of the doc is listeners for UI elements being clicked on
