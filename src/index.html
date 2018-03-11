@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>FRC Dashboard</title>
     <link href="css/style.css" rel="stylesheet">
+    <!-- href is added by JS if/when user chooses the theme. -->
+    <link id="theme-link" rel="stylesheet" href>
 </head>
 
 <body>
@@ -40,6 +42,16 @@
     </article>
     <!-- The sidebar of the dashboard. Designed for smaller control elements like selection boxes and small buttons. -->
     <aside>
+        <p>Theme:</p>
+        <div class="select-container">
+            <select id='theme-select'>
+                <option>dark</option>
+                <option>light</option>
+                <option>red</option>
+                <option>blue</option>
+                <option>rainbow</option>
+            </select>
+        </div>
         <!-- Example button which toggles /SmartDashboard/exampleValue NetworkTables value.
             The <p> below then says the value. -->
         <div id="example-section">
@@ -68,6 +80,7 @@
     <script src="networktables/networktables.js"></script>
     <script src="connection.js"></script>
     <script src="ui.js"></script>
+    <script src="components/themes.js"></script>
 </body>
 
 </html>
