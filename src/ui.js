@@ -21,7 +21,8 @@ let ui = {
     armPosition: document.getElementById('arm-position'),
     robotCurrent: document.getElementById('robot-current'),
     robotEnergy: document.getElementById('robot-energy'),
-    robotPower: document.getElementById('robot-power')
+    robotPower: document.getElementById('robot-power'),
+    camera: document.getElementById('camera')
 };
 
 // Key Listeners
@@ -99,6 +100,11 @@ NetworkTables.addKeyListener('/SmartDashboard/robot/totalEnergy', (key, value) =
 NetworkTables.addKeyListener('/SmartDashboard/robot/totalPower', (key, value) => {
     ui.robotPower.textContent = 'Power: ' + value + 'W';
 });
+
+ui.camera.onclick = function() {
+    var d = new Date();
+    ui.camera.setAttribute("style","background-image: url(http://10.60.98.2:1181/?action=stream"+d.getTime()+")");
+};
 
 // The rest of the doc is listeners for UI elements being clicked on
 ui.example.button.onclick = function() {
