@@ -19,6 +19,7 @@ let ui = {
     },
     autoSelect: document.getElementById('auto-select'),
     armPosition: document.getElementById('arm-position'),
+    armText: document.getElementById('arm-text'),
     robotCurrent: document.getElementById('robot-current'),
     robotEnergy: document.getElementById('robot-energy'),
     robotPower: document.getElementById('robot-power'),
@@ -41,18 +42,19 @@ let updateGyro = (key, value) => {
 NetworkTables.addKeyListener('/SmartDashboard/drive/navx/yaw', updateGyro);
 
 // The following case is an example, for a robot with an arm at the front.
-NetworkTables.addKeyListener('/SmartDashboard/arm/encoder', (key, value) => {
+NetworkTables.addKeyListener('/SmartDashboard/robot/elevator/encoder', (key, value) => {
     // 0 is all the way back, 1200 is 45 degrees forward. We don't want it going past that.
-    if (value > 1140) {
-        value = 1140;
+    if (value > 100) {
+        value = 100;
     }
-    else if (value < 0) {
-        value = 0;
+    else if (value < -46500) {
+        value = -46500;
     }
     // Calculate visual rotation of arm
-    var armAngle = value * 3 / 20 - 45;
+    var armAngle = value / 160;
     // Rotate the arm in diagram to match real arm
-    ui.robotDiagram.arm.style.transform = `rotate(${armAngle}deg)`;
+    ui.robotDiagram.arm.style.transform = `translateY(${armAngle}px)`; // `rotate(${armAngle}deg)`;
+    ui.armText.textContent = 'Elevator Height: ' + Math.round(value / -1159) + ' inches\n' + (value * -1)
 });
 
 // This button is just an example of triggering an event on the robot by clicking a button.
@@ -124,7 +126,7 @@ ui.autoSelect.onchange = function() {
 };
 // Get value of arm height slider when it's adjusted
 ui.armPosition.oninput = function() {
-    NetworkTables.putValue('/SmartDashboard/arm/encoder', parseInt(this.value));
+    NetworkTables.putValue('/SmartDashboard/robot/elevator/encoder', parseInt(this.value));
 };
 
 addEventListener('error',(ev)=>{
