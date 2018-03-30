@@ -53,7 +53,7 @@ body > * {
     font-family: monospace;
     display: block;
     height: 20vh;
-    width: 33vw;
+    width: 35vw;
     top: 0;
     left: 0;
     font-size: 20vh;
@@ -63,7 +63,7 @@ header {
     width: 20vw;
     height: 20vh;
     top: 0;
-    left: 33.5vw;
+    left: 35vw;
     color: white;
 }
 #camera {
@@ -71,7 +71,7 @@ header {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 43vw;
+    width: 57vw;
     height: 82vh;
     overflow: hidden;
     background-color: #333;
@@ -82,7 +82,7 @@ header {
 }
 article {
     top: 0;
-    left: 43vw;
+    left: 57vw;
     height: 100vh;
     width: 35vw;
 }
@@ -103,7 +103,7 @@ text {
 #gyro {
     width: 175px;
     height: 175px;
-    margin-left: 30px;
+    margin-left: 45px;
     margin-top: 15px;
 }
 #gyro-arm {
@@ -118,7 +118,7 @@ text {
 #robot-diagram {
     position: absolute;
     bottom: 1px;
-    left: 3vw;
+    left: 0vw;
 }
 #robot-arm {
     -webkit-transform-origin: right;
